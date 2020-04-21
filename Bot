@@ -1,0 +1,16 @@
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_cs
+
+import nltk
+import re
+
+South_Park = pd.read_csv('/kaggle/input/southparklines/All-seasons.csv', sep = '/t', names=['label', 'text'], header= None)
+
+South_Park['label_clean'] = South_Park['label'].str.replace('[^\w\s]','')
+South_Park.head()
+def tokinize(text):
+    tokens = re.split('\W+',  text)
+    return tokens
+South_Park['label_tokinize'] = South_Park['label_clean'].apply(lambda x: tokinize(x.lower()))
+South_Park.head()
