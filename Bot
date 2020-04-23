@@ -26,6 +26,7 @@ South_Park['not_common_word'].head()
 porter = nltk.PorterStemmer()
 lancaster=LancasterStemmer()
 my_lines_list=[]
+pip install tensorflow keras pickle nltk 
 
 def stremming(tokinizeText):
     Text = [porter.stem(word) for word in  tokinizeText]
