@@ -14,3 +14,23 @@ def tokinize(text):
     return tokens
 South_Park['label_tokinize'] = South_Park['label_clean'].apply(lambda x: tokinize(x.lower()))
 South_Park.head()
+
+common_word= nltk.corpus.stopwords.words('english')
+def remove_stopwords(labels_tokinize):
+    text = [word for word in labels_tokinize if word not in common_word]
+    return text
+South_Park['not_common_word'] = South_Park['label_tokinize'].apply(lambda x : remove_stopwords(x))
+South_Park['not_common_word'].head()
+
+
+porter = nltk.PorterStemmer()
+lancaster=LancasterStemmer()
+my_lines_list=[]
+
+def stremming(tokinizeText):
+    Text = [porter.stem(word) for word in  tokinizeText]
+    return Text
+
+South_Park['text_stemmed'] = South_Park['not_common_word'].apply(lambda x : stremming(x))
+for line in South_Park['not_common_word']:
+    my_lines_list.append(South_Park['not_common_word'])
