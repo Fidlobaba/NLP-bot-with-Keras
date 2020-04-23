@@ -4,6 +4,8 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_cs
 
 import nltk
 import re
+import json
+import pickle
 
 South_Park = pd.read_csv('/kaggle/input/southparklines/All-seasons.csv', sep = '/t', names=['label', 'text'], header= None)
 
@@ -26,7 +28,6 @@ South_Park['not_common_word'].head()
 porter = nltk.PorterStemmer()
 lancaster=LancasterStemmer()
 my_lines_list=[]
-pip install tensorflow keras pickle nltk 
 
 def stremming(tokinizeText):
     Text = [porter.stem(word) for word in  tokinizeText]
